@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.rptools.MapTool</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>MapTool</name>
+  <summary>Virtual Tabletop</summary>
+  <description>
+    <p>MapTool is a flexible virtual tabletop for playing roleplaying games with remote players or face to face.</p>
+  </description>
+  <launchable type="desktop-id">net.rptools.MapTool.desktop</launchable>
+</component>

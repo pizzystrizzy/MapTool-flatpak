@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MapTool
+Comment=Flexible virtual tabletop for playing roleplaying games with remote players or face to face
+Exec=MapTool
+Icon=net.rptools.MapTool
+Terminal=false
+Type=Application
+Categories=Game
+Keywords=VTT;RPG;Map

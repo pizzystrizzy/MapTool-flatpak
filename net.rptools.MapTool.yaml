@@ -1,0 +1,45 @@
+app-id: net.rptools.MapTool
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: MapTool
+
+finish-args:
+  - --socket=x11
+  - --socket=wayland
+  - --share=ipc
+  - --device=dri
+  - --socket=pulseaudio
+  - --share=network
+  - --filesystem=host
+
+modules:
+  - name: maptool
+    buildsystem: simple
+    build-commands:
+      # 1. Unzip the archive directly into a temporary folder
+      - mkdir -p extracted
+      - unzip -q MapTool-1.18.6-linux.zip -d extracted/
+
+      # 2. Copy the extracted bin/ and lib/ folders into /app
+      - mkdir -p /app/bin /app/lib
+      - cp -r extracted/bin/* /app/bin/
+      - cp -r extracted/lib/* /app/lib/
+      - chmod +x /app/bin/MapTool
+
+      # 3. Install Desktop File
+      - install -Dm644 net.rptools.MapTool.desktop /app/share/applications/net.rptools.MapTool.desktop
+
+      # 4. Install Icon
+      - install -Dm644 /app/lib/MapTool.png /app/share/icons/hicolor/256x256/apps/net.rptools.MapTool.png
+
+      # 5. Install AppStream Metadata
+      - install -Dm644 net.rptools.MapTool.metainfo.xml /app/share/metainfo/net.rptools.MapTool.metainfo.xml
+
+    sources:
+      - type: file
+        path: MapTool-1.18.6-linux.zip
+      - type: file
+        path: net.rptools.MapTool.desktop
+      - type: file
+        path: net.rptools.MapTool.metainfo.xml
